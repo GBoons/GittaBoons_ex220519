@@ -1,0 +1,11 @@
+select gene_name, (seq_region_end-seq_region_start +1) as size from gene order by size limit 1;
+
++-----------+------+
+| gene_name | size |
++-----------+------+
+| TRDD1     |    8 |
++-----------+------+
+1 row in set (0.06 sec)
+
+gene_name: TRDD1
+size: 8bp
