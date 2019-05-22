@@ -1,0 +1,6 @@
+db.bioinf_mongo_examen.find({method_of_admission:{$regex:"TABLET;BUCCAL, SUBLINGUAL"}},{drug:1,_id:0}).count()
+
+RESULT:
+1
+
+(this result is -> { "drug" : "DEMULEN 1/35-28" } )
