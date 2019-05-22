@@ -1,0 +1,23 @@
+UNF(Personnel number,Name,Date of birth,Lab code,Lab name,Research code,Research description,Research supervisor)
+
+
+1NF: no repeated or calculated columns, suggest primary keys: "Personnel number", "Lab code", "Research code"
+
+LabPersonnel(Personnel number (PK),Name,Date of birth,Lab code (PK),Lab name)
+Research(Research code (PK),Research description,Research supervisor)
+
+
+2NF: every non-prime attribute should depend on the whole key
+
+Personnel(Personnel number(PK),Name,Date of birth,Lab code)
+Lab(Lab code (PK),Lab name)
+Projects(Research code (PK),Personnel number (PK))
+Research(Research code (PK),Research description,Research supervisor)
+
+
+3NF: every attribute that is not part of a key does not depend on another non-key attribute (2NF=3NF)
+
+Personnel(Personnel number (PK),Name,Date of birth,Lab code)
+Lab(Lab code (PK),Lab name)
+Projects(Research code (PK),Personnel number (PK))
+Research(Research code (PK),Research description,Research supervisor)
