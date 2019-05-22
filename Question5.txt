@@ -1,0 +1,23 @@
+1)
+
+select chromosome,count(*) from gene where description LIKE "%cancer%" group by chromosome order by count(*) desc limit 1 offset 1;
+
++------------+----------+
+| chromosome | count(*) |
++------------+----------+
+| 9          |        5 |
++------------+----------+
+1 row in set (0.07 sec)
+
+2)
+
+select count(distinct et.exon_id) from gene g join transcript t on g.gene_id=t.gene_id join exon_transcript et on et.transcript_id=t.transcript_id where chromosome="9";
+
++---------------------------+
+| count(distinct et.exon_id) |
++---------------------------+
+|                     24097 |
++---------------------------+
+1 row in set (0.21 sec)
+
+
