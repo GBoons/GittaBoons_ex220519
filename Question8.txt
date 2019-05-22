@@ -1,0 +1,24 @@
+First we need to find the ENSEMBL identifier for this gene in zebrafish:
+
+	$ curl "http://rest.ensembl.org/xrefs/symbol/zebrafish/mycn" -H "content-type:application/json"
+
+-> [{"id":"ENSDARG00000006837","type":"gene"}]
+
+Then, we can look for the sequence:
+
+	$ curl "http://rest.ensembl.org/sequence/id/ENSDARG00000006837" -H "content-type:text/x-fasta"
+
+>ENSDARG00000006837.9 chromosome:GRCz11:20:33294428:33299384:1
+TAGAATAATACTTCACAGCCCGAAACACAGAGGCGCAGAACAGTCTTCAGTCGCCGCGGT
+AGATGTGCGACTCCAAACGGGAGGCACAGTGACTGCGATAAAGAAGGGACAAGAAAAACA
+GGAAAAAACAAGAGGTAAGACGCTCAGGTCTTATAGAGTCACTTAAACTATAGCTGGTTT
+CATTCACGCGTAAGATTATTTACCTGTCTGTGACTGACCTGCATTTGAAAGAGTTTGTGT.....
+
+However, now we get too much bases, we would like to limit this to 100. Since we now know the exact region of this gene, this could also be done like this:
+
+	$ curl "http://rest.ensembl.org/sequence/region/zebrafish/20:33294428..33294527" -H "content-type:text/x-fasta"
+
+>chromosome:GRCz11:20:33294428:33294527:1
+TAGAATAATACTTCACAGCCCGAAACACAGAGGCGCAGAACAGTCTTCAGTCGCCGCGGT
+AGATGTGCGACTCCAAACGGGAGGCACAGTGACTGCGATA
+
